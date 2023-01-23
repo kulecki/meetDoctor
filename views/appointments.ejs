@@ -1,0 +1,24 @@
+<%- include("header") %>
+    <body>
+        <%- include("nav") %>
+        <div class="admin-menu">
+            <%if(loggedUser.role != "Patient"){ %>
+            <a href="/appointments/newAppointment"><button class="btn">Add new appointment</button></a>
+            <%}%>
+        </div>
+       
+        <div class="main-training">
+            <h3>Assigned participants</h1>
+            <%appointments.forEach((appointment) => {%>
+                <a href="/appointments/<%=appointment._id.toString()%>">
+                    <div class="training-container">
+                        <div><p class="patientP"><%=appointment.patient%></p><div><p class="adminPanelP">Patient Name</p></div></div>
+                        <div><p class="durationP"><%=appointment.duration%></p><div><p class="adminPanelP">Duration</p></div></div>
+                        <div><p class="dateP"><%=appointment.date%></p><div><p class="adminPanelP">Date</p></div></div>
+                        <div><p class="doctorP"><%=appointment.doctor%></p><div><p class="adminPanelP">Doctor</p></div></div>
+                    </div>
+                </a>
+            <%})%>
+        </div>
+    </body>
+</html>

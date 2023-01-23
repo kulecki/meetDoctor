@@ -1,0 +1,25 @@
+<%- include("header") %>
+    <body>
+        <%- include("nav") %>
+        <div class="main-training">
+                    <div class="training-details-container">
+                        <p>Title: test</p>
+                        <p>Length: <%=appointment.duration%> minutes</p>
+                        <p>Date: <%=appointment.date%></p>
+                        <p>Doctor: <%=appointment.doctor%></p>
+                    <div>
+                        <%if (loggedUser.role != "Patient"){%>
+                        <a href="/cancelAppointment/<%=appointment._id.toString()%>"><button class="btn">Delete</button></a>
+                        <%}%>
+                        <%if (loggedUser.login != appointment.doctor){%>
+                            <%if(appointment.patient != ''){%>
+                                <a href="/signForAppointment/<%=appointment._id.toString()%>"><button class="btn">Unsign</button></a>
+                            <%}else{%>
+                                <a href="/signForAppointment/<%=appointment._id.toString()%>"><button class="btn">Sign for</button></a>
+                            <%}%>
+                        <%}%>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<div class="cards-wrapper">
+    <%doctors.forEach((doctor)=>{%>
+            <div class="card doctor">
+                <div class="card-data-wrapper">
+                    <div class="image-wrapper">
+                        <img src="/images/doctor.jpg" alt="photo of a doctor" style=" max-width: 100%;max-height: 100%;">
+                    </div>
+                    <div class="info-wrapper">
+                        <p>First Name: <%=doctor.contact.firstName%></p>
+                        <p>Last Name: <%=doctor.contact.lastName%></p>
+                        <%if(doctor.contact.firstName === 'Doktor'){%>
+                            <p>Specialization: nutritionist</p>
+                        <%}%> 
+                        <%if(doctor.contact.firstName === 'Michał'){%>
+                            <p>Specialization: surgeon</p>
+                        <%}%>                             
+                    </div>
+                </div>
+                    <div class="card-button-wrapper">
+                        <%if(loggedCookie){%>
+                            <a href="/doctorDetails/<%=doctor.login%>">Register</a> 
+                        <%}%>                       
+                    </div>
+            </div>
+    <%})%>
+</div>

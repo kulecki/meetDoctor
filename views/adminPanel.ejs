@@ -1,0 +1,16 @@
+<%- include("header") %>
+    <body>
+        <%- include("nav") %>
+        <div class="main">
+            <%users.forEach((user) => {%>
+                <a href="/adminPanel/<%=user.login%>">
+                    <div class="user-container"> 
+                        <div><p class="loginP"><%=user.login%></p><div><p class="adminPanelP">Login</p></div></div>                    
+                        <div><p class="fName"><%=user.contact.firstName%></p><div><p class="adminPanelP">First Name</p></div></div>        
+                        <div><p class="lName"><%=user.contact.lastName%></p><div><p class="adminPanelP">Last Name</p></div></div>                        
+                    </div>
+                </a>
+            <%})%>
+        </div>
+    </body>
+</html>

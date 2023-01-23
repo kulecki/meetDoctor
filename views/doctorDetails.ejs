@@ -1,0 +1,42 @@
+<%- include("header") %>
+    <body>
+        <%- include("nav") %>
+        <div class="home-main">
+                <div class="card doctor details">
+                    <div class="card-data-wrapper">
+                        <div class="image-wrapper">
+                            <img src="/images/doctor.jpg" alt="There should be a doctor photo" style="    max-width: 100%;max-height: 100%;">
+                        </div>
+                        <div class="info-wrapper">
+                            <p>First Name: <%=doctor.contact.firstName%></p>
+                            <p>Last Name: <%=doctor.contact.lastName%></p>
+                            <p>Specialization: nutritionist</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    <div class="details-main">
+            <%appointments.forEach((appointment) => {%>
+            <div class="training-details-container">
+                <p>Title: test appointment</p>
+                <p>Length: <%=appointment.duration%> minutes</p>
+                <p>Date: <%=appointment.date%></p>
+                <p>Host: <%=doctor.contact.firstName%></p>
+                <div>
+                    <%if (loggedUser.role != "Patient"){%>
+                    <a href="/cancelAppointment/<%=appointment._id.toString()%>"><button class="btn">Delete</button></a>
+                    <%}%>
+                    <%if (loggedUser.login === appointment.doctor){%>
+                        <%if(appointment.patient != ''){%>
+                            <a href="/signForAppointment/<%=appointment._id.toString()%>"><button class="btn">Unsign</button></a>
+                        <%}else{%>
+                            <a href="/signForAppointment/<%=appointment._id.toString()%>"><button class="btn">Sign for</button></a>
+                        <%}%>
+                    <%}%>
+                </div>
+                <%})%>
+        </div>
+    </div>
+    </body>
+</html>
+
